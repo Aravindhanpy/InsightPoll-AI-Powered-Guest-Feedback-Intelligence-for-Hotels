@@ -18,7 +18,6 @@ So the app never breaks even if the API key is missing.
 """
 
 import os
-import anthropic
 from dotenv import load_dotenv
 from textblob import TextBlob
 from keybert import KeyBERT
