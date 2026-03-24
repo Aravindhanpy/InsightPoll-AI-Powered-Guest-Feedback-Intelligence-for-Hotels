@@ -1,1 +1,0 @@
-# InsightPoll-AI-Powered-Guest-Feedback-Intelligence-for-Hotels
