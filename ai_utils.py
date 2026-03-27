@@ -20,7 +20,7 @@ So the app never breaks even if the API key is missing.
 import os
 from dotenv import load_dotenv
 from textblob import TextBlob
-
+from typing import Optional
 
 # Load .env file — picks up API keys automatically
 load_dotenv()
@@ -86,7 +86,7 @@ def generate_claude_insight(
     tally:             dict,
     percentages:       dict,
     sentiment_summary: dict,
-    avg_score:         float | None,
+    avg_score:         Optional[float],
     keywords:          list[str],
     total_responses:   int,
     feedback_count:    int,
