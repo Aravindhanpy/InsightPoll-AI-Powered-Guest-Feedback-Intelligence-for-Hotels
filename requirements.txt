@@ -3,7 +3,6 @@ uvicorn
 sqlmodel
 httpx
 textblob
-keybert
 plotly
 python-dotenv
 groq
