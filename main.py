@@ -12,6 +12,10 @@ from sqlmodel import Session, select
 from database import create_db_and_tables, get_session
 from models import PollDB, ResponseDB, PollCreate, ResponseCreate
 from ai_utils import analyze_sentiment, extract_keywords, generate_claude_insight
+import nltk
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
+nltk.download('brown', quiet=True)
 from visualization import (
     create_sentiment_trend_chart,
     create_sentiment_chart,
