@@ -20,13 +20,13 @@ So the app never breaks even if the API key is missing.
 import os
 from dotenv import load_dotenv
 from textblob import TextBlob
-from keybert import KeyBERT
+
 
 # Load .env file — picks up API keys automatically
 load_dotenv()
 
 # Loaded once at startup — slow first time, fast every call after
-kw_model = KeyBERT()
+
 
 # ── AI client — swap between providers by changing these 3 lines ──────────
 # Option A: Anthropic Claude (paid, best quality)
@@ -63,15 +63,20 @@ def analyze_sentiment(text: str) -> tuple[str, float]:
 # ── Keywords ──────────────────────────────────────────────────────────────────
 
 def extract_keywords(texts: list[str], top_n: int = 5) -> list[str]:
-    """
-    Joins all feedback into one block, then extracts the top_n keywords.
-    Returns [] if no texts provided.
-    """
     if not texts:
         return []
-    combined = " ".join(texts)
-    results  = kw_model.extract_keywords(combined, top_n=top_n)
-    return [kw[0] for kw in results]
+    import re
+    from collections import Counter
+    combined = " ".join(texts).lower()
+    words = re.findall(r'\b[a-z]{4,}\b', combined)
+    stopwords = {"this","that","with","have","from","they","were","been","will","your","what","when","hotel","room","stay","very","also","more","just"}
+    filtered = [w for w in words if w not in stopwords]
+    return [w for w, _ in Counter(filtered).most_common(top_n)]
+```
+
+**3. In `requirements.txt`, remove this line:**
+```
+keybert>=0.8.0
 
 
 # ── Claude AI Insight ─────────────────────────────────────────────────────────
