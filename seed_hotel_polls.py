@@ -12,7 +12,7 @@ Make sure the API is running first:
 
 import httpx
 
-API = "http://127.0.0.1:8000"
+API = "https://insightpoll-ai-powered-guest-feedback.onrender.com"
 
 POLLS = [
     {
