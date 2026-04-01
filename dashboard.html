@@ -560,10 +560,10 @@ async function initVote() {
   show('v-loading'); hide('v-error');
   try {
     const res = await fetch(`${API}/polls`);
-    if (!res.ok) throw new Error('Could not load polls — is the API running?');
+    if (!res.ok) throw new Error('Under MAINTENANCE buddy pls come after');
     const data = await res.json();
     if (!data.polls || data.polls.length === 0)
-      throw new Error('No polls found. Run: python seed_hotel_polls.py');
+      throw new Error('Under MAINTENANCE buddy pls come after');
 
     allPolls = data.polls;
     buildPills(data.polls);
